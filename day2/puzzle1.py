@@ -4,9 +4,9 @@ def run_ops(ops: [int]):
     operation = -1
     while operation != 99:
         execute(ops, position)
-        print(ops)
         position += 4
         operation = ops[position]
+    print(ops)
 
 
 def execute(ops, position):
