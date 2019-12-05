@@ -1,20 +1,22 @@
-import itertools
-
 input = '240920-789857'
 inputs = input.split('-')
 start = int(inputs[0])
 end = int(inputs[1])
 initial = [int(x) for x in inputs[0]]
+for x in range(0, 5):
+    if initial[x] > initial[x+1]:
+        initial[x:] = [initial[x]]*(6-x)
+        break
 
 
-def predicate(numbers):
+def adjacent_numbers(numbers):
     for i in range(1, len(numbers)):
         if numbers[i] == numbers[i-1]:
             return True
     return False
 
 
-def generate_combinations(initial_numbers):
+def generate_combinations(initial_numbers, predicate):
     number_of_combinations = 0
     current = initial_numbers.copy()
     current_number = int(''.join(map(str, current)))
@@ -36,9 +38,5 @@ def generate_combinations(initial_numbers):
     return number_of_combinations
 
 
-for x in range(0, 5):
-    if initial[x] > initial[x+1]:
-        initial[x:] = [initial[x]]*(6-x)
-        break
-
-print(generate_combinations(initial))
+if __name__ == '__main__':
+    print(generate_combinations(initial, adjacent_numbers))
