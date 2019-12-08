@@ -82,7 +82,7 @@ opcodes = {
 }
 
 
-def run_ops(ops: [int]):
+def run_ops(ops: [int], opcodes):
     position = 0
     operation = '-1'
     while int(operation) != 99:
@@ -122,4 +122,4 @@ if __name__ == '__main__':
         line = fp.readline()
         raw_ops = line.split(',')
         ops = list(map(int, raw_ops))
-    run_ops(ops)
+    run_ops(ops, opcodes)
